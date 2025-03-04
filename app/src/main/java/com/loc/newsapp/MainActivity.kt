@@ -5,8 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.loc.newsapp.login.LoginScreen
-import com.loc.newsapp.profile.ProfileScreen
+import com.loc.newsapp.login.LoginScreenV2
 import com.loc.newsapp.ui.theme.NewsAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +14,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsAppTheme {
 //                LoginScreen()
-                ProfileScreen()
+                LoginScreenV2()
+//                ProfileScreen()
             }
         }
     }
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun PreviewMainActivity() {
         NewsAppTheme {
-            ProfileScreen()
+            LoginScreenV2()
         }
     }
 }

@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -36,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -107,14 +109,14 @@ fun LoginScreenV2() {
                     )
 
                     var emailValue by rememberSaveable { mutableStateOf("") }
-                    TextField(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 8.dp)
-                            .background(
-                                color = Color.White,
-                                shape = CircleShape
-                            ),
+                    TextField(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp)
+                        .background(
+                            color = Color.White, shape = CircleShape
+                        ),
+                        singleLine = true,
+                        maxLines = 1,
                         label = {
                             Text(text = "example@gmail.com")
                         },
@@ -129,9 +131,12 @@ fun LoginScreenV2() {
                         ),
                         onValueChange = { newValue ->
                             emailValue = newValue
-                        }
+                        },
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Email,
+                            imeAction = ImeAction.Next
+                        )
                     )
-
                     Text(
                         modifier = Modifier.padding(top = 16.dp),
                         text = "Password",
@@ -141,14 +146,14 @@ fun LoginScreenV2() {
                     )
 
                     var passValue by rememberSaveable { mutableStateOf("") }
-                    TextField(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 8.dp)
-                            .background(
-                                color = Color.White,
-                                shape = CircleShape
-                            ),
+                    TextField(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp)
+                        .background(
+                            color = Color.White, shape = CircleShape
+                        ),
+                        singleLine = true,
+                        maxLines = 1,
                         label = {
                             Text(text = "Type your password")
                         },
@@ -162,11 +167,12 @@ fun LoginScreenV2() {
                             unfocusedIndicatorColor = Color.Transparent
                         ),
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Password
+                            keyboardType = KeyboardType.Password,
+                            imeAction = ImeAction.Done
                         ),
                         onValueChange = { newValue ->
                             passValue = newValue
-                        }
+                        },
                     )
 
                     Text(
@@ -185,34 +191,35 @@ fun LoginScreenV2() {
                             .padding(top = 24.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Box(modifier = Modifier
-                            .height(height = 1.dp)
-                            .weight(weight = 1f)
-                            .background(
-                                color = Color(
-                                    color = android.graphics.Color.parseColor("#4d4d4d")
+                        Box(
+                            modifier = Modifier
+                                .height(height = 1.dp)
+                                .weight(weight = 1f)
+                                .background(
+                                    color = Color(
+                                        color = android.graphics.Color.parseColor("#4d4d4d")
+                                    )
                                 )
-                            ))
+                        )
 
                         Text(
                             modifier = Modifier.padding(
                                 horizontal = 8.dp,
-                            ),
-                            text = "Or login with",
-                            fontSize = 14.sp,
-                            color = Color(
+                            ), text = "Or login with", fontSize = 14.sp, color = Color(
                                 color = android.graphics.Color.parseColor("#4d4d4d")
                             )
                         )
 
-                        Box(modifier = Modifier
-                            .height(height = 1.dp)
-                            .weight(weight = 1f)
-                            .background(
-                                color = Color(
-                                    color = android.graphics.Color.parseColor("#4d4d4d")
+                        Box(
+                            modifier = Modifier
+                                .height(height = 1.dp)
+                                .weight(weight = 1f)
+                                .background(
+                                    color = Color(
+                                        color = android.graphics.Color.parseColor("#4d4d4d")
+                                    )
                                 )
-                            ))
+                        )
                     }
 
                     Row(
@@ -220,13 +227,11 @@ fun LoginScreenV2() {
                             .fillMaxWidth()
                             .padding(top = 16.dp)
                     ) {
-                        OutlinedButton(
-                            modifier = Modifier.weight(weight = 1f),
+                        OutlinedButton(modifier = Modifier.weight(weight = 1f),
                             shape = RoundedCornerShape(
                                 size = 12.dp
                             ),
-                            onClick = { /*TODO*/ }
-                        ) {
+                            onClick = { /*TODO*/ }) {
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -257,13 +262,11 @@ fun LoginScreenV2() {
 
                         Spacer(modifier = Modifier.width(width = 12.dp))
 
-                        OutlinedButton(
-                            modifier = Modifier.weight(weight = 1f),
+                        OutlinedButton(modifier = Modifier.weight(weight = 1f),
                             shape = RoundedCornerShape(
                                 size = 12.dp
                             ),
-                            onClick = { /*TODO*/ }
-                        ) {
+                            onClick = { /*TODO*/ }) {
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
